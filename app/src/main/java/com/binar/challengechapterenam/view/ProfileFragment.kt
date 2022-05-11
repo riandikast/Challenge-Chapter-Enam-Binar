@@ -24,13 +24,13 @@ import kotlinx.coroutines.launch
 
 
 class ProfileFragment : Fragment() {
-    lateinit var home: SharedPreferences
+
     lateinit var viewModel: ViewModelUser
     lateinit var username: String
     lateinit var email : String
     lateinit var idUser : String
     lateinit var userManager : com.binar.challengechapterenam.datastore.UserManager
-    @SuppressLint("CommitPrefEdits")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         userManager = com.binar.challengechapterenam.datastore.UserManager(requireContext())
-        home = requireContext().getSharedPreferences("login", Context.MODE_PRIVATE)
+
         userManager.userUsername.asLiveData().observe(requireActivity()){
             view.update1.setText(it)
         }
@@ -85,19 +85,9 @@ class ProfileFragment : Fragment() {
             }
 
             custom.btnlogoutya.setOnClickListener {
-//                val logout = home.edit()
-//
-//                for (key in home.all.keys) {
-//                    if (key.startsWith("login_state")) {
-//                        logout.remove(key)
-//                    }
-//                }
-//                logout.commit()
-
                 GlobalScope.launch {
                     userManager.deleteDataLogin()
                 }
-
                 a.dismiss()
                 view.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
             }

@@ -39,15 +39,14 @@ class DetailFragment : Fragment() {
                 if (favorite == "true"){
                     btnfavorite.setImageResource(R.drawable.unlove)
                     favorite = "false"
-                    alreadyfavorite = "true"
+
                     break
                 }
-
 
                 if (favorite == "false"){
                     btnfavorite.setImageResource(R.drawable.love)
                     favorite = "true"
-                    alreadyfavorite = "false"
+
                     break
                 }
             }

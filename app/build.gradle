@@ -63,5 +63,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // data store
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
-
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
