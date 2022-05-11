@@ -1,5 +1,6 @@
-package com.binar.challengechapterlima.model
+package com.binar.challengechapterenam.model
 
+import com.binar.challengechapterenam.model.GetAllUserItem
 import com.google.gson.annotations.SerializedName
 
 data class ResponseLogin(

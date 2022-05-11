@@ -1,6 +1,9 @@
-package com.binar.challengechapterlima.network
+package com.binar.challengechapterenam.network
 
-import com.binar.challengechapterlima.model.*
+import com.binar.challengechapterenam.model.GetAllFilmItem
+import com.binar.challengechapterenam.model.GetAllUserItem
+import com.binar.challengechapterenam.model.ResponseLogin
+import com.binar.challengechapterenam.model.ResponseRegister
 import retrofit2.Call
 import retrofit2.http.*
 

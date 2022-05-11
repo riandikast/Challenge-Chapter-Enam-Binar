@@ -15,7 +15,7 @@
 
 
         <TextView
-
+            android:text="Username"
             android:id="@+id/welcome"
             android:textSize="20sp"
             android:layout_marginStart="20dp"

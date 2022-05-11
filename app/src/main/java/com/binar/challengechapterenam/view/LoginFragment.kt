@@ -1,4 +1,4 @@
-package com.binar.challengechapterenam.fragment
+package com.binar.challengechapterenam.view
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -16,10 +16,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.binar.challengechapterenam.R
-import com.binar.challengechapterlima.model.GetAllUserItem
-import com.binar.challengechapterlima.model.ResponseLogin
-import com.binar.challengechapterlima.network.ApiClient
-import com.binar.challengechapterlima.viewmodel.ViewModelUser
+import com.binar.challengechapterenam.model.GetAllUserItem
+import com.binar.challengechapterenam.model.ResponseLogin
+import com.binar.challengechapterenam.network.ApiClient
+import com.binar.challengechapterenam.viewmodel.ViewModelUser
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ import retrofit2.Response
 
 
 class LoginFragment : Fragment() {
-    lateinit var send : SharedPreferences
+
     lateinit var dataUser : List<GetAllUserItem>
     lateinit var viewModel : ViewModelUser
     lateinit var email: String
@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_login, container, false)
-        send = requireContext().getSharedPreferences("login", Context.MODE_PRIVATE)
+
         userManager = com.binar.challengechapterenam.datastore.UserManager(requireContext())
         getDataUserItem()
 

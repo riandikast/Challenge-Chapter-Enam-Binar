@@ -1,14 +1,13 @@
-package com.binar.challengechapterenam.fragment
+package com.binar.challengechapterenam.view
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import com.binar.challengechapterenam.R
-import com.binar.challengechapterlima.model.GetAllFilmItem
+import com.binar.challengechapterenam.model.GetAllFilmItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_detail.view.*
@@ -20,6 +19,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
@@ -51,12 +51,6 @@ class DetailFragment : Fragment() {
                     break
                 }
             }
-
-
-
-
-
-
         }
         return view
     }

@@ -1,4 +1,4 @@
-package com.binar.challengechapterenam.fragment
+package com.binar.challengechapterenam.view
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,9 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.findNavController
 import com.binar.challengechapterenam.R
-import com.binar.challengechapterlima.viewmodel.ViewModelUser
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.binar.challengechapterenam.viewmodel.ViewModelUser
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.logout_dialog.view.*
 import kotlinx.coroutines.GlobalScope

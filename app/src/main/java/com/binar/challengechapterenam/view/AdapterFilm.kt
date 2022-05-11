@@ -1,11 +1,11 @@
-package com.binar.challengechapterlima.adapter
+package com.binar.challengechapterenam.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.challengechapterenam.R
-import com.binar.challengechapterlima.model.GetAllFilmItem
+import com.binar.challengechapterenam.model.GetAllFilmItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_film.view.*
 import kotlinx.android.synthetic.main.item_film.view.text1
@@ -19,12 +19,12 @@ class AdapterFilm (private val onclick : (GetAllFilmItem)->Unit) : RecyclerView.
         this.datafilm = film
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterFilm.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemview = LayoutInflater.from(parent.context).inflate(R.layout.item_film, parent,false)
         return ViewHolder(itemview)
     }
 
-    override fun onBindViewHolder(holder: AdapterFilm.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context).load(datafilm!![position].image).into(holder.itemView.gambar)
 
         holder.itemView.text1.text = datafilm!![position].title

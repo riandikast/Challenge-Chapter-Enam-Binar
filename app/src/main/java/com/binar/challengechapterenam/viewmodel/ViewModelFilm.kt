@@ -1,13 +1,17 @@
-package com.binar.challengechapterlima.viewmodel
+package com.binar.challengechapterenam.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.binar.challengechapterlima.model.GetAllFilmItem
-import com.binar.challengechapterlima.network.ApiClient
+
+import com.binar.challengechapterenam.model.GetAllFilmItem
+
+import com.binar.challengechapterenam.network.ApiClient
 import retrofit2.Call
 import retrofit2.Response
 
-class ViewModelFilm: ViewModel() {
+
+class ViewModelFilm (): ViewModel() {
     lateinit var liveDataFilm : MutableLiveData<List<GetAllFilmItem>>
 
     init {
@@ -17,6 +21,7 @@ class ViewModelFilm: ViewModel() {
     fun getLiveFilmObserver() : MutableLiveData<List<GetAllFilmItem>> {
         return liveDataFilm
     }
+
 
     fun makeFilmApi(){
         ApiClient.instance.getAllFilm()
@@ -39,3 +44,4 @@ class ViewModelFilm: ViewModel() {
                 }
             })
 }}
+

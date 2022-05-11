@@ -1,4 +1,4 @@
-package com.binar.challengechapterenam.fragment
+package com.binar.challengechapterenam.view
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -15,10 +15,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.binar.challengechapterenam.R
-import com.binar.challengechapterlima.model.GetAllUserItem
-import com.binar.challengechapterlima.model.ResponseRegister
-import com.binar.challengechapterlima.network.ApiClient
-import com.binar.challengechapterlima.viewmodel.ViewModelUser
+import com.binar.challengechapterenam.model.GetAllUserItem
+import com.binar.challengechapterenam.model.ResponseRegister
+import com.binar.challengechapterenam.network.ApiClient
+import com.binar.challengechapterenam.viewmodel.ViewModelUser
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import retrofit2.Call
@@ -28,7 +28,7 @@ import retrofit2.Response
 
 class RegisterFragment : Fragment() {
     lateinit var regisemailtext: String
-    lateinit var get: SharedPreferences
+
     lateinit var dataUser: List<GetAllUserItem>
     lateinit var viewModel: ViewModelUser
     lateinit var password: String
@@ -42,9 +42,6 @@ class RegisterFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_register, container, false)
-
-        get = requireContext().getSharedPreferences("login", Context.MODE_PRIVATE)
-
         getDataUserItem()
 
         view.btnregis.setOnClickListener {

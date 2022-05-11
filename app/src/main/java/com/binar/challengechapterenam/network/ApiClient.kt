@@ -1,4 +1,4 @@
-package com.binar.challengechapterlima.network
+package com.binar.challengechapterenam.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

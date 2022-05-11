@@ -1,4 +1,4 @@
-package com.binar.challengechapterlima.model
+package com.binar.challengechapterenam.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

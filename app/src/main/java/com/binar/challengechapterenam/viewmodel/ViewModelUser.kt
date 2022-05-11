@@ -1,13 +1,11 @@
-package com.binar.challengechapterlima.viewmodel
+package com.binar.challengechapterenam.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.binar.challengechapterlima.model.GetAllUserItem
-import com.binar.challengechapterlima.model.ResponseRegister
+import com.binar.challengechapterenam.model.GetAllUserItem
 
-import com.binar.challengechapterlima.network.ApiClient
+import com.binar.challengechapterenam.network.ApiClient
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 class ViewModelUser : ViewModel(){

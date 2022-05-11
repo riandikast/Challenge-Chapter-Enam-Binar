@@ -1,4 +1,4 @@
-package com.binar.challengechapterenam.fragment
+package com.binar.challengechapterenam.view
 
 
 import android.os.Bundle

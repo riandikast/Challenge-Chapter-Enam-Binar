@@ -1,6 +1,4 @@
-package com.binar.challengechapterlima.model
+package com.binar.challengechapterenam.model
 
-
-import com.google.gson.annotations.SerializedName
 
 class GetAllUser : ArrayList<GetAllUserItem>()
