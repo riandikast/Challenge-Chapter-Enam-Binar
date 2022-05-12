@@ -7,12 +7,13 @@
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/drawable/rectangleedittext.xml" value="0.1" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/activity_main.xml" value="0.1703125" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_favorite.xml" value="0.1921875" />
+        <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_home.xml" value="0.18206521739130435" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_login.xml" value="0.18206521739130435" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_register.xml" value="0.18206521739130435" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/fragment_splash_screen.xml" value="0.18206521739130435" />
+        <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/item_fav.xml" value="0.1" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/item_film.xml" value="0.18206521739130435" />
         <entry key="..\:/AndroidProject/ChallengeChapterEnam/app/src/main/res/layout/logout_dialog.xml" value="0.18206521739130435" />
       </map>

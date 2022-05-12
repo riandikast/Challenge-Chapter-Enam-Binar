@@ -11,14 +11,19 @@ import androidx.lifecycle.asLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.challengechapterenam.R
+import com.binar.challengechapterenam.database.FavoriteDB
+import com.binar.challengechapterenam.database.FavoriteFilm
 import com.binar.challengechapterenam.datastore.UserManager
 import com.binar.challengechapterenam.viewmodel.ViewModelFilm
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 
 class HomeFragment : Fragment() {
-
+    var db: FavoriteDB? = null
+    var film : FavoriteFilm? = null
     lateinit var adapterfilm : AdapterFilm
     lateinit var userManager : UserManager
 
@@ -41,7 +46,7 @@ class HomeFragment : Fragment() {
 
         userManager = UserManager(requireContext())
         userManager.userUsername.asLiveData().observe(requireActivity()){
-            welcome.text = it.toString()
+            view.welcome.text = it.toString()
         }
 
         getFilm()
@@ -51,6 +56,11 @@ class HomeFragment : Fragment() {
         }
         view.homelove.setOnClickListener {
             view.findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+        }
+
+        GlobalScope.async {
+            film = db?.getFavoriteDao()?.getFilmID(id.toInt())!!
+            db?.getFavoriteDao()?.getAllFav()
         }
         return view
     }
@@ -69,5 +79,5 @@ class HomeFragment : Fragment() {
         viewModel.makeFilmApi()
 
 
-}
+    }
 }

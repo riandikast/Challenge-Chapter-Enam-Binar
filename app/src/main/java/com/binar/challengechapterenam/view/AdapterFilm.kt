@@ -5,16 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.challengechapterenam.R
+import com.binar.challengechapterenam.database.FavoriteDB
+import com.binar.challengechapterenam.database.FavoriteFilm
 import com.binar.challengechapterenam.model.GetAllFilmItem
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.item_film.view.*
 import kotlinx.android.synthetic.main.item_film.view.text1
 import kotlinx.android.synthetic.main.item_film.view.text2
 import kotlinx.android.synthetic.main.item_film.view.text3
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 class AdapterFilm (private val onclick : (GetAllFilmItem)->Unit) : RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view)
     var datafilm : List<GetAllFilmItem>? = null
+
+
     fun setDataFilm(film  : List<GetAllFilmItem>){
         this.datafilm = film
     }
@@ -33,6 +40,7 @@ class AdapterFilm (private val onclick : (GetAllFilmItem)->Unit) : RecyclerView.
 
         holder.itemView.card.setOnClickListener {
             onclick(datafilm!![position])
+
         }
     }
 

@@ -1,9 +1,11 @@
 package com.binar.challengechapterenam.network
 
+
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 object ApiClient {
     const val BASE_URL = "https://apiexample.surelabsid.com/"
@@ -26,4 +28,5 @@ object ApiClient {
             .build()
         retrofit.create(ApiService::class.java)
     }
+
 }
