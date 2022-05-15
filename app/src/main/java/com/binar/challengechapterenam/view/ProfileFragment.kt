@@ -23,6 +23,7 @@ import androidx.lifecycle.asLiveData
 import androidx.navigation.findNavController
 import com.binar.challengechapterenam.R
 import com.binar.challengechapterenam.viewmodel.ViewModelUser
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.logout_dialog.view.*
@@ -46,7 +47,11 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         userManager = com.binar.challengechapterenam.datastore.UserManager(requireContext())
         userManager.userImage.asLiveData().observe(requireActivity()){
-            view.pp2.setImageURI(it.toUri())
+            if (it !=="x"){
+                Glide.with(requireContext()).load(it).into(view.pp)
+//            view.pp2.setImageURI(it.toUri())
+            }
+
         }
         userManager.userUsername.asLiveData().observe(requireActivity()){
             view.update1.setText(it)

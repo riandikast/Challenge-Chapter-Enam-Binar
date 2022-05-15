@@ -135,7 +135,6 @@ class DetailFragment : Fragment() {
                             null,
                             email,
                             createdAt,
-
                             director,
                             id.toInt(),
                             image,
