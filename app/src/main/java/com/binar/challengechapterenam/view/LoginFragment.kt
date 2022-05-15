@@ -102,12 +102,10 @@ class LoginFragment : Fragment() {
         login(email, password)
         for (i in dataUser.indices) {
             if (email == dataUser[i].email && password == dataUser[i].password) {
-
                 GlobalScope.launch {
                     userManager.saveDataLogin("true")
                     userManager.saveDataUser(dataUser[i].id, dataUser[i].email,dataUser[i].username, dataUser[i].completeName,dataUser[i].dateofbirth, dataUser[i].address )
                 }
-
                 view?.findNavController()
                     ?.navigate(R.id.action_loginFragment_to_homeFragment)
             }

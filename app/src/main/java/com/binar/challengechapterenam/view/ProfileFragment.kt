@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -44,7 +45,9 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         userManager = com.binar.challengechapterenam.datastore.UserManager(requireContext())
-
+        userManager.userImage.asLiveData().observe(requireActivity()){
+            view.pp2.setImageURI(it.toUri())
+        }
         userManager.userUsername.asLiveData().observe(requireActivity()){
             view.update1.setText(it)
         }
@@ -93,12 +96,12 @@ class ProfileFragment : Fragment() {
             custom.btnlogoutya.setOnClickListener {
                 GlobalScope.launch {
                     userManager.deleteDataLogin()
+                    userManager.deleteDataImage()
                 }
                 a.dismiss()
                 view.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
             }
             a.show()
-
         }
 
         view.addpp.setOnClickListener {
@@ -186,6 +189,9 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == 2000 && data != null){
             pp.setImageURI(data?.data)
+            GlobalScope.launch {
+                userManager.saveDataImage(data?.data.toString())
+            }
         }else {
 
         }

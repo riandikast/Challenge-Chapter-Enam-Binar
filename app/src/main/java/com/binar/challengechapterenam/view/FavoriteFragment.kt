@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 
 class FavoriteFragment : Fragment() {
@@ -29,6 +30,8 @@ class FavoriteFragment : Fragment() {
     var film : FavoriteFilm? = null
     lateinit var userManager : UserManager
     lateinit var adapterFavorite : AdapterFavorite
+    lateinit var emailUser : String
+    var idUser by Delegates.notNull<Int>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,10 +39,8 @@ class FavoriteFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_favorite, container, false)
         db = FavoriteDB.getInstance(requireContext())
-        GlobalScope.async {
-            film = db?.getFavoriteDao()?.getFilmID(id.toInt())!!
-            db?.getFavoriteDao()?.getAllFav()
-        }
+
+        emailUser =""
         userManager = UserManager(requireContext())
         userManager.userUsername.asLiveData().observe(requireActivity()){
             view.welcomefav.text = it.toString()
@@ -50,34 +51,41 @@ class FavoriteFragment : Fragment() {
         view.profilefav.setOnClickListener {
             view.findNavController().navigate(R.id.action_favoriteFragment_to_profileFragment)
         }
+        userManager.userID.asLiveData().observe(requireActivity()){
+            idUser = it.toInt()
+        }
+        userManager.userEmail.asLiveData().observe(requireActivity()){
+            emailUser = it
+            GlobalScope.launch {
+//            film = db?.getFavoriteDao()?.getFilmID(id)!!
+                db?.getFavoriteDao()?.getAllFav()
+                Log.d("www", emailUser)
+                val listdata = db?.getFavoriteDao()?.getFav(it)
+                requireActivity().runOnUiThread {
+                    listdata.let {
+                        if (listdata?.size == 0) {
+                            checkdatafav.text = "Belum ada favorite"
+                        }
+                        adapterFavorite = AdapterFavorite(){
+                            val bund = Bundle()
+                            bund.putParcelable("detailfilmfromfav", it)
+                            view.findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment,bund)
+                        }
 
-        view.listfav.layoutManager = LinearLayoutManager(requireContext())
-        GlobalScope.launch {
-        val listdata = db?.getFavoriteDao()?.getAllFav()
-        requireActivity().runOnUiThread {
-            listdata.let {
-                if (listdata?.size == 0) {
-                    checkdatafav.text = "Belum ada favorite"
+
+                        view.listfav.adapter = adapterFavorite
+                        adapterFavorite.setDataFav(it!!)
+
+                    }
                 }
-                adapterFavorite = AdapterFavorite(){
-                    val bund = Bundle()
-                    bund.putParcelable("detailfilmfromfav", it)
-                    view.findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment,bund)
-                }
-                view.listfav.adapter = adapterFavorite
-                adapterFavorite.setDataFav(it!!)
             }
-        }
-        }
 
+        }
+        view.listfav.layoutManager = LinearLayoutManager(requireContext())
 
 
         return view
     }
-
-
-
-
 
 
 }

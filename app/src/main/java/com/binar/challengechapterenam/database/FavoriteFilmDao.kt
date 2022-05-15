@@ -6,23 +6,15 @@ import androidx.room.*
 interface FavoriteFilmDao {
     @Insert
     fun addFilm (favoriteFilm : FavoriteFilm) : Long
-    @Delete()
+    @Delete
     fun deleteFav(favoriteFilm: FavoriteFilm ):Int
-    @Query("SELECT * FROM Fav WHERE Fav.id = :id")
-    fun getFilmID(id:Int): FavoriteFilm
+    @Query("SELECT * FROM Fav WHERE Fav.email = :email AND Fav.id = :id ")
+    fun checkFav(email: String, id: Int): List<FavoriteFilm>
+    @Query("SELECT * FROM Fav WHERE Fav.email = :email ")
+    fun getFav(email: String): List<FavoriteFilm>
+    @Query("DELETE FROM Fav WHERE Fav.email = :email AND Fav.id = :id")
+    fun deleteFilmID(email :String, id:Int): Int
     @Query("SELECT *  FROM Fav")
     fun getAllFav(): List<FavoriteFilm>
 
-
-
-
-
-//    @Query("SELECT count(*) FROM Fav WHERE Fav.id = :id")
-//    suspend fun checkFilm(id :String) : List<FavoriteFilm>
-//
-//    @Query("DELETE FROM Fav WHERE Fav.id = :id")
-//    suspend fun removeFilm(id :String)
-
-//    @Query("SELECT *  FROM Fav")
-//    fun getAllFavor(): List<FavoriteFilm>
 }

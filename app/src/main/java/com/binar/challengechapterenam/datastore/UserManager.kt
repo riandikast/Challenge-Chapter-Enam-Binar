@@ -9,7 +9,7 @@ class UserManager (context : Context) {
 
     private val dataStore : DataStore<Preferences> = context.createDataStore(name = "user_prefs")
     private val loginDataStore : DataStore<Preferences> = context.createDataStore(name = "login_prefs")
-
+    private val imageData: DataStore<Preferences> = context.createDataStore(name = "image_prefs")
     companion object{
 
         val ID = preferencesKey<String>("USER_ID")
@@ -19,6 +19,7 @@ class UserManager (context : Context) {
         val BIRTH = preferencesKey<String>("USER_BIRTH")
         val ADDRESS = preferencesKey<String>("USER_ADDRESS")
         val LOGIN_STATE = preferencesKey<String>("USER_LOGIN")
+        val IMAGE  = preferencesKey<String>("USER_IMAGE")
     }
 
     suspend fun saveDataUser(id : String, email:String, username: String, namalengkap: String, birth: String, address : String) {
@@ -44,6 +45,20 @@ class UserManager (context : Context) {
 
     suspend fun deleteDataLogin(){
         loginDataStore.edit{
+            it.clear()
+
+        }
+    }
+
+    suspend fun saveDataImage(image: String) {
+        imageData.edit {
+            it[IMAGE] = image
+
+        }
+    }
+
+    suspend fun deleteDataImage(){
+        imageData.edit{
             it.clear()
 
         }
@@ -74,5 +89,8 @@ class UserManager (context : Context) {
 
     val userLogin : kotlinx.coroutines.flow.Flow<String> = loginDataStore.data.map {
         it [LOGIN_STATE] ?: "false"
+    }
+    val userImage : kotlinx.coroutines.flow.Flow<String> = imageData.data.map {
+        it [IMAGE] ?: "x"
     }
 }

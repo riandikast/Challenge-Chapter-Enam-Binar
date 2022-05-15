@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
     var film : FavoriteFilm? = null
     lateinit var adapterfilm : AdapterFilm
     lateinit var userManager : UserManager
+    lateinit var email : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +34,10 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-
+        userManager = com.binar.challengechapterenam.datastore.UserManager(requireContext())
+        userManager.userEmail.asLiveData().observe(requireActivity()){
+            email = it.toString()
+        }
         view.list.layoutManager = LinearLayoutManager(requireContext())
         adapterfilm = AdapterFilm(){
             val bund = Bundle()
@@ -58,10 +61,7 @@ class HomeFragment : Fragment() {
             view.findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
         }
 
-        GlobalScope.async {
-            film = db?.getFavoriteDao()?.getFilmID(id.toInt())!!
-            db?.getFavoriteDao()?.getAllFav()
-        }
+
         return view
     }
 
